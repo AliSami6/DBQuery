@@ -16,7 +16,12 @@ class Student extends Model
 
         });
     }
-    public function cache_forget(){
+    public static function cache_forget(){
         return Cache::forget('students');
+    }
+    public static function boot(){
+        self::created(function(){
+           self::cache_forget();
+        });
     }
 }

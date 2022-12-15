@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,12 @@ Route::get('/', function () {
      'email'=>'mdashik45@gmail.com',
      'password'=>12345678
     ];
-    Cache::put('user_data',$data,now()->addMinutes(6));
+    // delete user data
+   // Cache::forget('user_data');
+    // get user data or fetch user data
+   // dd(Cache::get('user_data'));
+    //store user data
+   // Cache::put('user_data',$data,now()->addMinutes(6));
     return view('welcome');
 });
 
@@ -46,7 +52,7 @@ Route::get('students',function(){
     ]);
 */
    //DB::table('students')->upsert($data,['name','roll'],['reg']);
-//dd($students);
+
 //return $students;
  // $student = DB::table('students')->where('id',16);
  //$students= DB::table('students')->where('name','Rahim')->distinct()->get();
@@ -57,17 +63,19 @@ Route::get('students',function(){
  //return $students;
  //$students = DB::table('students')->crossJoin('classes','students.class_id','=','classes.id')->get();
  //dd($students);
- $students = DB::table('students')->get();
- return view('student',['students'=>$students]);
+
+ //$students = DB::table('students')->get();
+ //return view('student',['students'=>$students]);
  //$raw = DB::update('update classes set class_name = :class_name where id =:id', ['class_name'=>'Class E','id'=>5]);
  //$raw = DB::delete('delete from classes where id =:id',['id'=>5]);
 //return $raw
 });
+
 Route::get('rt',function(){
     $rt = DB::table('routines') ->whereDate('created_at', '2016-12-31')->get();
     return $rt;
 });
-
+Route::get('/pro',[ProductController::class,'index']);
 Route::get('/products',function(){
    $products = DB::table('products')->get();
    return view('products',['products'=>$products]);

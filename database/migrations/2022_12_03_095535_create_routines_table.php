@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('routines', function (Blueprint $table) {
             $table->id();
-           $table->date('created_at');
+
             $table->timestamps();
         });
     }

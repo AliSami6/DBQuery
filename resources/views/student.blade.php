@@ -68,7 +68,7 @@
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $student->name }}</td>
-                                    <td>{{ $student->class_name }}</td>
+
                                     <td>{{ $student->roll }}</td>
                                     <td>{{ $student->reg }}</td>
                                     <td>{{ $student->subject }}</td>

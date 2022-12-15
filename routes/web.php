@@ -2,9 +2,10 @@
 
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,12 @@ use Illuminate\Support\Facades\Cache;
 */
 
 Route::get('/', function () {
-    Cache::put('','','');
+    $data = [
+     'name'=> 'Ashik',
+     'email'=>'mdashik45@gmail.com',
+     'password'=>12345678
+    ];
+    Cache::put('user_data',$data,now()->addMinutes(6));
     return view('welcome');
 });
 

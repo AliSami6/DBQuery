@@ -20,7 +20,14 @@ class Student extends Model
         return Cache::forget('students');
     }
     public static function boot(){
-        self::created(function(){
+        parent::boot();
+        static::created(function(){
+           self::cache_forget();
+        });
+         static::updated(function(){
+           self::cache_forget();
+        });
+         static::deleted(function(){
            self::cache_forget();
         });
     }

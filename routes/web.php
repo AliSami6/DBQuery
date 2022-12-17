@@ -35,6 +35,17 @@ Route::get('/', function () {
 });
 
 Route::get('students',function(){
+  /*  DB::table('students')->insert([
+         'id'=>6,
+        'name'=>'hasan',
+        'roll'=>183005115,
+        'subject'=>'Data Communication',
+        'reg'=>202,
+        'address'=>'Jatrabari',
+        'mobile'=>'01668756723',
+        'birthDay'=>now(),
+    ]);
+    */
 //$date = '2022-12-03 16:33:01';
 //return date('d',strtotime($date));
 //return date('H:i:s',strtotime($date));
